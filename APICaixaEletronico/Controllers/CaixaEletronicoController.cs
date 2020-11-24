@@ -61,9 +61,9 @@ namespace APICaixaEletronico.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<RetornoReposta> Delete([FromBody] CaixaEletronicoRequisicao request)
+        public ActionResult<RetornoReposta> Delete(int id)
         {
-
+            CaixaEletronicoRepositorio.Delete(id);
             var retorno = new RetornoReposta()
             {
                 Code = 200,
