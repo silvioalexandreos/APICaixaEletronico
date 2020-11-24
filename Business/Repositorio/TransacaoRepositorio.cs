@@ -45,7 +45,7 @@ namespace Business.Repositorio
 
         public static void Delete(int id)
         {
-            BaseRepositorio.Delete<Transacao>(id);
+            BaseRepositorio.Delete<Cliente>(id);
         }
     }
 }

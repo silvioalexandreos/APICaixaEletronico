@@ -41,10 +41,5 @@ namespace Business.Repositorio
 
             return retorno;
         }
-
-        public static void Delete(int id)
-        {
-            BaseRepositorio.Delete<CaixaEletronico>(id);
-        }
     }
 }
