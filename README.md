@@ -1,4 +1,5 @@
-﻿# API para cadastro de desenvolvedores
+﻿# API para Simulação de funcionalidade de um caixa eletrônico
 
 
-# Destinada ao cadastro desenvolvedores, níveis e apresenta relatório.
+# Desenvolviva com Asp.Net Core e persistência de dados com Dapper.
+# A mesma é desenvolvida utilizando o padrão de três camadas. 
