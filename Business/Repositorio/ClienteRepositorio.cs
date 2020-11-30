@@ -43,6 +43,21 @@ namespace Business.Repositorio
             return retorno;
         }
 
+        public static List<Cliente> BuscarId(int id = 0)
+        {
+            string sql = "select saldo from Cliente";
+
+            if (id > 0)
+            {
+                sql += " where idCliente = @id";
+            }
+
+            
+            var retorno = BaseRepositorio.QuerySql<Cliente>(sql, new { id });
+
+            return retorno;
+        }
+
         public static void Delete(int id)
         {
             BaseRepositorio.Delete<Cliente>(id);

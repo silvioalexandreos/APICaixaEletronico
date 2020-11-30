@@ -42,6 +42,33 @@ namespace Business.Repositorio
 
             return retorno;
         }
+        //Buscar Transação por ID
+        public static List<Transacao> BuscarTransacaoClienteId(int clienteid = 1, string descricao = "")
+        {
+            //string sql = "select * from Transacao";
+
+            string sql = "select * from Cliente c join Transacao t on c.id = t.IdCliente";
+
+            if (clienteid > 0)
+            {
+                sql += " where idTransacao = @id";
+            }
+
+            if (!string.IsNullOrEmpty(descricao))
+            {
+                if (sql.Contains("where"))
+                {
+                    sql += " and nome like @descricao";
+                }
+                else
+                {
+                    sql += " where nome like @descricao";
+                }
+            }
+            var retorno = BaseRepositorio.QuerySql<Transacao>(sql, new { clienteid, descricao = "%" + descricao + "%" });
+
+            return retorno;
+        }
 
         public static void Delete(int id)
         {

@@ -46,7 +46,6 @@ namespace APICaixaEletronico.Controllers
             return retorno;
         }
 
-        [HttpPut]
         public ActionResult<RetornoReposta> Put([FromBody] ClienteRequisicao request)
         {
             var cliente = ClienteMapa.Mapa(request);

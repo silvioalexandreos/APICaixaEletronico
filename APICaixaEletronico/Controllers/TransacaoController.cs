@@ -22,20 +22,37 @@ namespace APICaixaEletronico.Controllers
             return cliente.ToList();
         }
 
-        [HttpGet("{descricao}")]
-        public ActionResult<TransacaoResposta> Get(string descricao)
+        [HttpGet("{id}")]
+        public ActionResult<TransacaoResposta> Get(int id)
         {
-            var cliente = TransacaoMapa.Mapa(TransacaoRepositorio.Buscar(0, descricao).FirstOrDefault());
+            var cliente = TransacaoMapa.Mapa(TransacaoRepositorio.Buscar(0, "").FirstOrDefault());
 
             return cliente;
         }
+
+
+        [HttpGet("cliente/{idCliente}")]
+        public ActionResult<TransacaoResposta> GetCliente(int clienteid)
+        {
+            var cliente = TransacaoMapa.Mapa(TransacaoRepositorio.BuscarTransacaoClienteId(clienteid, "").FirstOrDefault());
+
+            return cliente;
+        }
+
+        //[HttpGet("{descricao}")]
+        //public ActionResult<TransacaoResposta> Get(string descricao)
+        //{
+        //    var cliente = TransacaoMapa.Mapa(TransacaoRepositorio.Buscar(0, descricao).FirstOrDefault());
+
+        //    return cliente;
+        //}
 
         [HttpPost]
         public ActionResult<RetornoReposta> Post([FromBody] TransacaoRequisicao request)
         {
             var transacao = TransacaoMapa.Mapa(request);
 
-            TransacaoRepositorio.Atualizar(transacao);
+            TransacaoRepositorio.Gravar(transacao);
 
 
             var retorno = new RetornoReposta()
